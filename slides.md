@@ -18,4 +18,4 @@
 
 <br>
 
-**Note: content and order may change**
+_Note: content and order may change_
