@@ -1,1 +1,1 @@
-# demystifying-tty
+View the slides online at [xqzhou.github.io/demystifying-tty](https://xqzhou.github.io/demystifying-tty)
