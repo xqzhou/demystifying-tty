@@ -5,7 +5,7 @@ import SocketServer
 import webbrowser
 
 HOST = "localhost"
-PORT = 8002
+PORT = 8003
 
 Handler = SimpleHTTPServer.SimpleHTTPRequestHandler
 Handler.extensions_map.update({'.md': 'text/x-markdown'})
