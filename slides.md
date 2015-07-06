@@ -8,7 +8,7 @@
 
 <br>
 
-- Terminology: Console, Terminal, TTY, Shell 
+- Terms: Console, Terminal, TTY, Shell 
 - A slightly deeper look at TTY
 - Terminal Login Procedure
 - Pseudo Terminal
@@ -19,6 +19,18 @@
 <br>
 
 _Note: content and order may change_
+
+---
+
+## Process Standard input-output
+
+<br>
+
+input -> process -> output
+
+<br>
+
+![Standard input-output](img/unix-process-stdin-stdout.png)
 
 ---
 
@@ -47,3 +59,92 @@ _Note: content and order may change_
 - TTY also means the device file representing the terminal
 - Console is generally the primary terminal directly connected to a machine <!-- .element: class="fragment" -->
 
+---
+
+## A slightly deeper look at TTY
+
+Note: tty, echo $$, ls -al /proc/[proc id], Alt + F[1-6]
+
+---
+
+## Terminal Login Procedure
+<br>
+```
+                                +--------+
+                                |  init  |
+                                +---+----+
+                                    |fork 
+                                    v     
+                                +---+----+
+                                |  init  |
+                                +---+----+
+                                    |exec 
+                                    v     
+                                +---+----+
+                                |  getty |
+                                +--------+
+```
+
+***
+
+<br>
+```
+                                +--------+
+                                |  init  |
+                                +---+----+
+                                    |fork 
+                                    v     
+                                +---+----+
+                                |  init  |
+                                +---+----+
+                                    |exec 
+                                    v     
+                                +---+----+
+                                |  getty |
+                                +--------+
+                                    |exec 
+                                    v     
+                                +---+----+
+                                |  login |
+                                +--------+
+```
+
+***
+
+```
+                                +--------+
+                                |  init  |
+                                +---+----+
+                                    |fork 
+                                    v     
+                                +---+----+
+                                |  getty |
+                                +--------+
+                                    |exec 
+                                    v     
+                                +---+----+
+                                |  login |
+                                +--------+
+                                    |clone 
+                                    v     
+                                +---+----+
+                                |  bash  |
+                                +--------+
+```
+
+---
+
+## Controlling Terminal
+
+<br>
+
+- /dev/tty
+- sigint
+
+Note: sudo strace $$, stty -a
+
+---
+
+## nohup
+
+Note: shopt -s huponexit
